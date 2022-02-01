@@ -1,0 +1,31 @@
+.image {
+  width: 350px;
+  height: 350px;
+}
+.details {
+  padding: 0 10px;
+}
+#container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(1, 25%);
+  margin-left: 45%;
+  width: 96vw;
+  margin-left: 36%;
+  padding-top: 20px;
+}
+.button {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+.fa {
+  font-size: large;
+  color: #268bd2;
+}
+.button :hover {
+  background-color: rgba(226, 198, 237);
+}
