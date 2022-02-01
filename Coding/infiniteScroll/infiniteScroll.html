@@ -11,9 +11,11 @@
 </head>
 
 <body onload="getData(1)">
-
-    <input type="text" placeholder="Search your favourites" />
-    <button type="submit">Submit</button>
+    <div class="search">
+        <input type="text" placeholder="Search your favourites" oninput="debounce(search,3000)" id="searchbar" />
+        <button type="submit" onclick="search()">Submit</button>
+    </div>
+    <div id="output"></div>
     <div id="container"></div>
     <button onclick="scrolltop()" class="button">
         <i class="fa fa-arrow-up"></i>
