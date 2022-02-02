@@ -1,4 +1,4 @@
-// Link : https://oj.masaischool.com/contest/2968/problem/03
+// Link : https://oj.masaischool.com/contest/2968/problem/04
 function runProgram(input) {
   input = input.split("\n");
   let tc = +input[0];
@@ -6,25 +6,23 @@ function runProgram(input) {
   for (let i = 0; i < tc; i++) {
     let [N, K] = input[line++].trim().split(" ").map(Number);
     let arr = input[line++].trim().split(" ").map(Number);
-    FirstNegativeInteger(N, K, arr);
+    minimumSum(N, K, arr);
   }
 }
-function FirstNegativeInteger(N, K, arr) {
-  let str = "";
-  for (let i = 0; i < N - K + 1; i++) {
-    let ans = 0;
-    for (let j = i; j < K + i; j++) {
-      if (arr[j] < 0) {
-        ans = arr[j];
-        break;
-      }
-    }
-    str += ans + " ";
+function minimumSum(N, K, arr) {
+  let sum = 0;
+  for (let i = 0; i < K; i++) {
+    sum += arr[i];
   }
-  console.log(str.trim());
+  let min = sum;
+  for (let i = K; i < N; i++) {
+    sum += arr[i] - arr[i - K];
+    min = Math.min(sum, min);
+  }
+  console.log(min);
 }
 if (process.env.USERNAME === "vasuk") {
-  runProgram(``);
+  runProgram(`5`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");
