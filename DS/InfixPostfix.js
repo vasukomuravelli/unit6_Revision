@@ -3,18 +3,22 @@ function runProgram(input) {
   let stack = [];
   let str = "";
   for (let i = 0; i < exp.length; i++) {
-    if (exp[i].match(/[a-z]/i)) {
+    if (isChar(exp[i])) {
       str += exp[i];
+    } else if (exp[i] == "(") {
+      stack.push(exp[i]);
     } else if (exp[i] == ")") {
-      console.log("i", i);
-      if (stack.length == 0) {
+      while (stack.length > 0 && peek(stack) != "(") {
+        str += stack.pop();
+      }
+      if (stack.length === 0) {
         return false;
       } else {
-        while (peek(stack) != "(" && stack.length > 0) {
-          str += stack.pop();
-        }
+        stack.pop();
       }
     } else {
+      while (stack.length > 0 && priority(peek(stack)) >= priority(exp[i]))
+        str += stack.pop();
       stack.push(exp[i]);
     }
   }
@@ -23,8 +27,19 @@ function runProgram(input) {
   }
   console.log(str);
 }
+function priority(a) {
+  if (a === "^") return 3;
+  if (a === "*" || a === "/") return 2;
+  if (a === "+" || a === "-") return 1;
+  return -1;
+}
 function peek(a) {
   return a[a.length - 1];
+}
+function isChar(a) {
+  if (a === "-" || a === "/" || a == "+" || a == "*" || a == "(" || a == ")")
+    return false;
+  else return true;
 }
 if (process.env.USERNAME === "vasuk") {
   runProgram(`A+B*C/(E-F)`);
