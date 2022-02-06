@@ -15,18 +15,19 @@ function SWMaximum(N, K, arr) {
     }
   }
   str += max + " ";
-  max = -1;
   for (let i = K; i < N; i++) {
     ans.shift();
     ans.push(arr[i]);
-    max = Math.max(...ans);
+    if (arr[i] > max) {
+      max = arr[i];
+    }
     str += max + " ";
   }
   console.log(str.trim());
 }
 if (process.env.USERNAME === "vasuk") {
   runProgram(`6 3
-  1 2 3 1 4 5`);
+  3 2 1 1 4 5`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");
