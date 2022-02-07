@@ -2,32 +2,41 @@ function runProgram(input) {
   input = input.split("\n");
   let [N, K] = input[0].trim().split(" ").map(Number);
   let arr = input[1].trim().split(" ").map(Number);
-  SWMaximum(N, K, arr);
+  console.log(SWMaximum(N, K, arr));
 }
 function SWMaximum(N, K, arr) {
-  let str = "";
-  let ans = [];
-  let max = -1;
+  const result = [];
+  const que = [];
+  if (N < K) {
+    return null;
+  }
+
   for (let i = 0; i < K; i++) {
-    ans.push(arr[i]);
-    if (arr[i] > max) {
-      max = arr[i];
+    while (que.length > 0 && arr[i] >= arr[que[que.length - 1]]) {
+      que.pop();
     }
+    que.push(i);
+    console.log(que);
   }
-  str += max + " ";
+
+  result.push(arr[que[0]]);
+
   for (let i = K; i < N; i++) {
-    ans.shift();
-    ans.push(arr[i]);
-    if (arr[i] > max) {
-      max = arr[i];
+    while (que.length > 0 && arr[i] >= arr[que[que.length - 1]]) {
+      que.pop();
     }
-    str += max + " ";
+
+    if (que.length > 0 && que[0] <= i - K) {
+      que.shift();
+    }
+    que.push(i);
+    result.push(arr[que[0]]);
   }
-  console.log(str.trim());
+  return result;
 }
 if (process.env.USERNAME === "vasuk") {
   runProgram(`6 3
-  3 2 1 1 4 5`);
+  1 2 3 1 4 5`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");
