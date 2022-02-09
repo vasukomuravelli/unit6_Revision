@@ -72,3 +72,18 @@ function display(i) {
 for (let i = 0; i < array.length; i++) {
   display.call(array, i);
 }
+
+//Throttling : guarantees the callback to be called at every n delay; network requests done during this period are ignored.
+
+let c = 0;
+function throttler(fn, wait) {
+  let lastcall = 0;
+  return function () {
+    // we need to have present time and the last callback time was made
+    console.log(c++);
+    if (Date.now() - lastcall >= wait) {
+      lastcall = Date.now();
+      fn.apply(this, arguments);
+    }
+  };
+}

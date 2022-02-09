@@ -1,21 +1,25 @@
 function outer(time) {
   return new Promise((resolve, reject) => {
-    // function setDelay(time) {
+    if (typeof time !== "number") {
+      return reject("Type of time should be of number");
+    }
     setTimeout(() => {
-      if (typeof time === "number") resolve("Given time delay is done");
-      else {
-        reject("Incorrect type of time");
-      }
-    }, time);
-    // }
-    // setDelay(time);
+      resolve("given time delay is done");
+    }, 2000);
   });
 }
-outer(3000)
-  .then((res) => console.log(res))
-  .catch((err) => console.log("err:", err));
-// console.log(promise);
 
-function hello() {
-  console.log("hello from promise.js");
+// outer(2000)
+//   .then((res) => console.log(res))
+//   .catch((err) => console.log(err));
+
+async function result() {
+  try {
+    let x = await outer("2000");
+    console.log(x);
+  } catch (e) {
+    console.log("e", e);
+  }
 }
+
+result();

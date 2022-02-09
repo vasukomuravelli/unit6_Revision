@@ -49,3 +49,15 @@ x();
 // var myPlayer = new Player("messi", "barcelone");
 
 // console.log("myPlayer", myPlayer);
+
+class person1 {
+  constructor(id) {
+    this.id = id;
+  }
+  getid() {
+    console.log(this.id);
+  }
+}
+
+let object = new person1(123);
+console.log(object.__proto__.getid);
