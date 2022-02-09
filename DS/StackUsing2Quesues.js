@@ -9,27 +9,35 @@ function runProgram(input) {
 }
 let queue1 = [];
 let queue2 = [];
-let top = 0;
 function S2Q(op, value) {
   if (op === 1) {
-    queue1.push(value);
+    queue2.push(value);
+    while (queue1.length) {
+      queue2.push(queue1.shift());
+    }
+    let temp = queue1;
+    queue1 = queue2;
+    queue2 = temp;
   } else {
-    if (queue1.length === 0) {
-      console.log(-1);
+    if (queue1.length) {
+      console.log(queue1.shift());
     } else {
-      while (queue1.length) {
-        queue2.push(queue1.pop());
-      }
-      console.log(queue2);
+      console.log(-1);
     }
   }
 }
 if (process.env.USERNAME === "vasuk") {
-  runProgram(`5
+  runProgram(`11
     1 2
     1 3
     2
     1 4
+    1 8
+    1 26
+    2
+    2
+    2
+    2
     2`);
 } else {
   process.stdin.resume();
