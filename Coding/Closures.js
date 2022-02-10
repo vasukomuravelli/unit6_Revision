@@ -44,17 +44,17 @@ const calculate = cal.add(1).multiply(4).subtract(2).add(20).divison(11);
 
 console.log(calculate.total);
 
-// function callApi() {
-//   console.log("Here's the data");
-// }
+function callApi() {
+  console.log("Here's the data");
+}
 
-// function debounce(fn, time) {
-//   let delay;
-//   console.log("clicked");
-//   if (delay) {
-//     clearTimeout(delay);
-//   }
-//   delay = setTimeout(() => {
-//     fn();
-//   }, time);
-// }
+const debounce = (fn, time) => {
+  let delay;
+  console.log("clicked");
+  return function () {
+    if (delay) {
+      clearTimeout(delay);
+    }
+    delay = setTimeout(() => fn.apply(this, arguments), time);
+  };
+};

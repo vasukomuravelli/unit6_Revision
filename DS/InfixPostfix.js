@@ -17,8 +17,9 @@ function runProgram(input) {
         stack.pop();
       }
     } else {
-      while (stack.length > 0 && priority(peek(stack)) >= priority(exp[i]))
+      while (stack.length > 0 && priority(peek(stack)) >= priority(exp[i])) {
         str += stack.pop();
+      }
       stack.push(exp[i]);
     }
   }
@@ -42,7 +43,7 @@ function isChar(a) {
   else return true;
 }
 if (process.env.USERNAME === "vasuk") {
-  runProgram(`A+B*C/(E-F)`);
+  runProgram(`a+b-c+d*(e-f)/g+(h*(i/j))`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");
