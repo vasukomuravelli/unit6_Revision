@@ -6,46 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <script src="./Closures.js"></script> -->
 </head>
 
 <body>
-    <button id="button" onclick="fn()">Click me!</button>
+    <button id="button">Click me</button>
 </body>
 
 </html>
 <script>
 
-    function callApi() {
-        console.log("Here's the data");
+    let button = document.getElementById("button");
+    function getApi() {
+        console.log("The data has been received");
     }
-
-    const debounce = (fn, time) => {
+    function debounce(fn, time) {
         let delay;
         return function () {
-            console.log("clicked", delay);
+            console.log("clicked");
             if (delay) {
                 clearTimeout(delay);
             }
-            delay = setTimeout(() => fn.apply(this, arguments), time);
-        };
-    };
-    let c = 0;
-    function throttler(fn, wait) {
+            delay = setTimeout(() => fn(), time);
+        }
+    }
+    function throttle(fn, time) {
         let lastcall = 0;
         return function () {
-            // we need to have present time and the last callback time was made
-            console.log(c++);
-            if (Date.now() - lastcall >= wait) {
+            if (Date.now() - lastcall >= time) {
+                fn();
                 lastcall = Date.now();
-                fn.apply(this, arguments);
             }
-        };
+        }
     }
-    let fn = throttler(callApi, 2000);
-    // let button = document.getElementById("button");
-    // button.addEventListener("click", fn);
-    // button.onclick = () => {
-    //     throttler(callApi, 2000)
-    // };
+    button.onclick = debounce(getApi, 2000);
 </script>

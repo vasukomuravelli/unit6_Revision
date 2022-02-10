@@ -51,10 +51,11 @@ function callApi() {
 const debounce = (fn, time) => {
   let delay;
   console.log("clicked");
+  console.log(delay);
   return function () {
     if (delay) {
       clearTimeout(delay);
     }
-    delay = setTimeout(() => fn.apply(this, arguments), time);
+    delay = setTimeout(() => fn(), time);
   };
 };
