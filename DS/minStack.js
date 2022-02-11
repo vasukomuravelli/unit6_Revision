@@ -1,3 +1,5 @@
+// Link : https://oj.masaischool.com/contest/2075/problem/03
+
 function runProgram(input) {
   input = input.split("\n");
   // Space complexity : 1;
@@ -34,7 +36,7 @@ function runProgram(input) {
         stack.push(+value);
         min = +value;
       } else {
-        if (peek(stack) < +value) {
+        if (min < +value) {
           stack.push(+value);
         } else {
           stack.push(2 * +value - min);
@@ -57,9 +59,11 @@ function peek(a) {
   return a[a.length - 1];
 }
 if (process.env.USERNAME === "vasuk") {
-  runProgram(`push 3
-    push 5
+  runProgram(`push 5
+    push 3
     push 1
+    getMin()
+    pop()
     getMin()
     pop()
     getMin()`);
