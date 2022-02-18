@@ -19,7 +19,7 @@ function checkpoints(M, N, grid) {
       openings++;
     }
   }
-  for (let i = 1; i < N - 1; i++) {
+  for (let i = 1; i < N; i++) {
     if (grid[0][i] == ".") {
       openings++;
     }
