@@ -13,7 +13,7 @@ export const HomePage = () => {
     const [data, setData] = React.useState([]);
     const [page, setPage] = React.useState(1);
     const [total, setTotal] = React.useState(0);
-    const [sorted, setSorted] = React.useState();
+    const [sorted, setSorted] = React.useState(1);
     const [filter, setFilter] = React.useState("");
     React.useEffect(() => { getData() }, [page,sorted]);
 
@@ -50,7 +50,7 @@ export const HomePage = () => {
                     })}
                     </div>
                     </div>
-                    <div>
+                    <div style={{marginTop:"20px"}}>
                         <h3>Sort By age</h3>
                         <Select placeholder="Please select sort order" name="Role" onChange={(value)=>setSorted(value)}>
                         <Option value="1">Ascending</Option>
