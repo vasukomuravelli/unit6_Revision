@@ -31,9 +31,9 @@ router.get("/", authenticate, async (req, res) => {
     let size = req.query.size || 5;
     let sort = req.query.sort || 1;
     let offset = (page - 1) * size;
-    console.log(req.query.sort);
+    console.log(req.query.sort, sort);
     const student = await Student.find()
-      .sort({ age: sort })
+      .sort({ Age: sort })
       .populate({ path: "Teacher", select: { Name: 1 } })
       .populate({ path: "Test", select: { Subject: 1, Marks: 1 } })
       .skip(offset)
