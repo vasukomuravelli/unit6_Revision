@@ -68,4 +68,21 @@ router.get("/:id", authenticate, async (req, res) => {
   }
 });
 
+router.get("/gender/:id", authenticate, async (req, res) => {
+  try {
+    const student = await Student.find({ Gender: req.params.id })
+      .populate({ path: "Teacher", select: { Name: 1 } })
+      .populate({
+        path: "Test",
+        select: { Subject: 1, Marks: 1, Name: 1, Grade: 1 },
+      })
+      .lean()
+      .exec();
+
+    res.status(200).json({ student });
+  } catch (e) {
+    res.status(400).json({ message: e.message, status: "Failed" });
+  }
+});
+
 module.exports = router;

@@ -14,11 +14,20 @@ export const HomePage = () => {
     const [page, setPage] = React.useState(1);
     const [total, setTotal] = React.useState(0);
     const [sorted, setSorted] = React.useState(1);
-    const [filter, setFilter] = React.useState("");
     React.useEffect(() => { getData() }, [page,sorted]);
 
     const getData = () => {
         axios.get(`http://localhost:2345/students/?page=${page}&sort=${sorted}`, {
+            headers : {authorization: `Bearer ${user.token}`}
+        }).then((response) => {
+            setTotal(response.data.totalPages)
+            setData(response.data.student);
+        }).catch((error) => {
+            alert("Error: " + error.message);
+        })
+    }
+    const handleGender = (value) => {
+        axios.get(`http://localhost:2345/students/gender/${value}`, {
             headers : {authorization: `Bearer ${user.token}`}
         }).then((response) => {
             setTotal(response.data.totalPages)
@@ -59,7 +68,7 @@ export const HomePage = () => {
                         <Option value="-1">Descending</Option>
                         </Select><br /> 
                         <h3>Filter By gender</h3>
-                        <Select placeholder="Please select filter gender" name="Role" onChange={(value)=>setFilter(value)}>
+                        <Select placeholder="Please select filter gender" name="Role" onChange={(value)=>handleGender(value)}>
                         <Option value="Male">Male</Option>
                         <Option value="Female">Female</Option>
                     </Select><br/> 
