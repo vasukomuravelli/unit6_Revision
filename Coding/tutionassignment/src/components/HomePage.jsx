@@ -37,6 +37,7 @@ export const HomePage = () => {
                         <p>Student Name</p>
                         <p>Student Grade</p>
                         <p>Teacher</p>
+                        <p>Tests Taken</p>
                     </div>
                     <div>
                     {data.map((e) => {
@@ -45,6 +46,7 @@ export const HomePage = () => {
                                 <p>{e.Name}</p>
                                 <p>{e.Grade}</p>
                                 <p>{e.Teacher.Name}</p>
+                                <p>{e.Test.length}</p>
                             </div></Link>
                         )
                     })}
