@@ -1,0 +1,54 @@
+body {
+  color: rgb(8 189 128);
+}
+.details {
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+  width: 75%;
+}
+.details > p {
+  width: 33%;
+}
+.heading {
+  font-size: 24px;
+  padding: 10px 0 0 0;
+  font-weight: bold;
+}
+.content {
+  font-size: 24px;
+}
+.singleDetails {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.singleDetails label,
+.singleDetails p {
+  font-weight: bold;
+  text-align: left;
+  width: -webkit-fill-available;
+  margin-left: 20%;
+}
+.formcentre {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 40%;
+  left: 50%;
+  width: 35%;
+}
+.test {
+  font-size: 20px;
+  color: rgb(45 129 247);
+}
+.formcentre .formlabel {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+  padding: 5px;
+}
+.formcentre label {
+  width: 70px;
+  margin-right: 20px;
+  text-align: left;
+}
