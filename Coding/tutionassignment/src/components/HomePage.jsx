@@ -14,6 +14,7 @@ export const HomePage = () => {
     const [page, setPage] = React.useState(1);
     const [total, setTotal] = React.useState(0);
     const [sorted, setSorted] = React.useState();
+    const [filter, setFilter] = React.useState("");
     React.useEffect(() => { getData() }, [page,sorted]);
 
     const getData = () => {
@@ -51,11 +52,17 @@ export const HomePage = () => {
                     </div>
                     <div>
                         <h3>Sort By age</h3>
-                        <Select placeholder="Please select Role" name="Role" onChange={(value)=>setSorted(value)}>
+                        <Select placeholder="Please select sort order" name="Role" onChange={(value)=>setSorted(value)}>
                         <Option value="1">Ascending</Option>
                         <Option value="-1">Descending</Option>
+                        </Select><br /> 
+                        <h3>Filter By gender</h3>
+                        <Select placeholder="Please select filter gender" name="Role" onChange={(value)=>setFilter(value)}>
+                        <Option value="Male">Male</Option>
+                        <Option value="Female">Female</Option>
                     </Select><br/> 
                     </div>
+
                 </div>
             <Pagination defaultCurrent={1} defaultPageSize={5} total={data.length*total} />
         </div>
