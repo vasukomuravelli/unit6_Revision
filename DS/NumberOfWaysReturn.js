@@ -17,6 +17,13 @@ function NumberOfWays(N, dp) {
   dp[N - 1] =
     NumberOfWays(N - 1, dp) + NumberOfWays(N - 2, dp) + NumberOfWays(N - 3, dp);
   return dp[N - 1];
+  // Iterative Way
+  // Initialization dp[0]=1;dp[1]=2;dp[2]=4;
+  //for(let i=3;i<N+1;i++)
+  // {
+  //   dp[i] = dp[i-1]+dp[i-2]+dp[i-3];
+  // }
+  // return dp[N-1];
 }
 if (process.env.USERNAME === "vasuk") {
   runProgram(`5`);

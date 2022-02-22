@@ -4,13 +4,13 @@ function runProgram(input) {
   let dp = new Array(N + 1).fill(-1);
   dp[0] = 0;
   dp[1] = 1;
-  console.log(fib(N + 1, dp));
+  console.log(fib(N, dp));
 }
 function fib(N, dp) {
-  if (dp[N - 1] != -1) {
-    return dp[N - 1];
+  if (dp[N] != -1) {
+    return dp[N];
   }
-  return (dp[N - 1] = fib(N - 1, dp) + fib(N - 2, dp));
+  return (dp[N] = fib(N - 1, dp) + fib(N - 2, dp));
 }
 if (process.env.USERNAME === "vasuk") {
   runProgram(`5`);

@@ -34,13 +34,19 @@ Constraints:
 0 <= fruits[i] < fruits.length */
 
 function FruitBasket(N, arr) {
-    let max = 0;
-    let basketcount = 0;
-    for (let i = 0; i < N && basketcount <= 2; i++){
-        if (arr[i] != arr[i + 1]) {
-            let start = arr[i];
-            basketcount += 1
-        }
-        if
+  let max = 1;
+  let basket1 = arr[0];
+  let basket2;
+  let i = 1;
+  while (i < N) {
+    if (arr[i] != basket1) {
+      basket2 = arr[i];
+      max++;
     }
+    if (arr[i] == basket1 || arr[i] == basket2) {
+      max++;
+    } else {
+    }
+    i++;
+  }
 }
