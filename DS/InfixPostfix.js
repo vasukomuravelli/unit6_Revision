@@ -1,3 +1,4 @@
+// Link : https://oj.masaischool.com/contest/3046/problem/02
 function runProgram(input) {
   let exp = input;
   let stack = [];
