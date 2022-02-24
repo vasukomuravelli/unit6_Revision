@@ -1,0 +1,42 @@
+[
+  {
+    "name": "vasu",
+    "age": 26,
+    "id": 1,
+    "sec": "A",
+    "subject": ["physics", "maths"]
+  },
+  {
+    "name": "raman",
+    "age": 23,
+    "id": 2,
+    "sec": "A"
+  },
+  {
+    "name": "john",
+    "age": 26,
+    "id": 3,
+    "sec": "B",
+    "subject": ["physics", "maths"]
+  },
+  {
+    "name": "Steve",
+    "age": 24,
+    "id": 4,
+    "sec": "B"
+  },
+  {
+    "name": "Bruce",
+    "age": 37,
+    "id": 5,
+    "sec": "A",
+    "subject": ["physics", "maths", "Biology", "chemistry"]
+  },
+  {
+    "name": "groot",
+    "age": 22,
+    "id": 6,
+    "sec": "A",
+    "subject": ["English"]
+  }
+]
