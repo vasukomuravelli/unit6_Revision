@@ -36,6 +36,10 @@ export const HomePage = () => {
             alert("Error: " + error.message);
         })
     }
+    const pageonChange = (value) => {
+        console.log(value);
+        setPage(value);
+    }
         return (
             <div>
                 <div style={{display: 'flex'}}>
@@ -75,7 +79,7 @@ export const HomePage = () => {
                     </div>
 
                 </div>
-            <Pagination defaultCurrent={1} defaultPageSize={5} total={data.length*total} />
+                <Pagination defaultCurrent={1} defaultPageSize={5} onChange={pageonChange} total={data.length*total} />
         </div>
           )  
 }
