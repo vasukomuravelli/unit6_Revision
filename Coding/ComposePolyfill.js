@@ -27,3 +27,29 @@ console.log(evaluate(5));
 const ans = pipe(add, subtract, multiply); //works as pipe inbuilt function left to right
 
 console.log(ans(5));
+
+// Map Polyfill
+
+let arr = ["1", "2", "3", "4", "5"];
+
+let newArr = [];
+
+for (let i = 0; i < arr.length; i++) {
+  newArr.push(Number(arr[i]));
+}
+
+console.log(newArr);
+
+// Filter Polyfill
+
+let arr1 = [1, 2, 3, 4, 5];
+
+let EvenArr = [];
+
+for (let i = 0; i < arr1.length; i++) {
+  if (arr1[i] % 2 == 0) {
+    EvenArr.push(arr1[i]);
+  }
+}
+
+console.log(EvenArr);
