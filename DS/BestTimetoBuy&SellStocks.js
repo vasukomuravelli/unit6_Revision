@@ -1,27 +1,15 @@
 function runProgram(input) {
-  input = input.split("\n");
-  let N = +input[0];
-  let arr = input[1].trim().split(" ").map(Number);
-  let min = Number.MAX_VALUE;
-  let minIndex = -1;
-  for (let i = 0; i < N; i++) {
-    if (arr[i] < min) {
-      min = arr[i];
-      minIndex = i;
-    }
+  let arr = input.split(" ").map(Number);
+  let min = arr[0];
+  let max = 0;
+  for (let i = 1; i < arr.length; i++) {
+    min = Math.min(min, arr[i]);
+    max = Math.max(max, arr[i] - min);
   }
-  let max = min;
-  for (let i = minIndex + 1; i < N; i++) {
-    if (arr[i] > max) {
-      max = arr[i];
-    }
-  }
-
-  console.log(max - min);
+  console.log(max);
 }
 if (process.env.USERNAME === "vasuk") {
-  runProgram(`5
-    5 1 4 6 3`);
+  runProgram(`7 1 5 3 6 4`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");
