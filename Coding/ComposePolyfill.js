@@ -52,4 +52,23 @@ for (let i = 0; i < arr1.length; i++) {
   }
 }
 
+Array.prototype.myMap = function (callback) {
+  let res = [];
+  for (let i = 0; i < this.length; i++) {
+    res.push(callback(this[i]));
+  }
+  return res;
+};
+
+// Array.prototype.filter = function (callback) {
+//   let res = [];
+//   for (let i = 0; i < this.length; i++) {
+//     res.push()
+//   }
+// }
+
+const array = ["1", "2", "3", "4"].myMap((e) => e > 5);
+
+console.log(array);
+
 console.log(EvenArr);

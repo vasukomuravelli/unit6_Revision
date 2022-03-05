@@ -13,6 +13,15 @@ let person = {
 
 createobj.call(person, "vasu", 26);
 
-console.log(person);
+let obj = {
+  name: "Keshav",
+  age: 26,
+};
+
+obj.prototype.consfn = function () {
+  console.log("name", this.name);
+};
+
+console.log(obj);
 
 // console.log(a, b, c);

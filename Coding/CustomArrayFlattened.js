@@ -1,18 +1,30 @@
-function customArrayFlat(arr, depth = 1) {
+function customFlatArray(arr, depth = 1) {
   let res = [];
-  arr.forEach((ar) => {
-    if (Array.isArray(ar) && depth > 0) {
-      res.push(...customArrayFlat(ar, depth - 1));
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i]) && depth > 0) {
+      res.push(...customFlatArray(arr[i], depth - 1));
     } else {
-      res.push(ar);
+      res.push(arr[i]);
     }
-  });
+  }
   return res;
 }
-let arr = [
-  [1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [9, 10, 11],
-];
-console.log(customArrayFlat(arr));
+
+console.log(customFlatArray([1, 2, [3, 4, [5, 6], [7, 8, [9]]]], 2));
+
+//  Custom flatening of objects
+
+function customFlattenobj(obj) {
+  let newArr = [];
+  for (let k in obj) {
+    if (typeof k === "object") {
+      customFlattenobj(k);
+    } else {
+      newArr.push(obj[k]);
+    }
+  }
+}
+
+let obj = {
+  a: 1,
+};
